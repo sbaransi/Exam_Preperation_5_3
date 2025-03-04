@@ -1,0 +1,235 @@
+Absolutely! Let's solve each of the example questions in the order they were presented, with clear highlighting for each section.
+
+JavaScript Solutions
+
+Functions and Validations: validateEmail(email)
+JavaScript
+
+// --- Example 1: validateEmail(email) ---
+function validateEmail(email) {
+  if (typeof email !== 'string' || email.trim() === '') {
+    return false; // Check for empty string or incorrect type
+  }
+
+  const atIndex = email.indexOf('@');
+  const dotIndex = email.lastIndexOf('.');
+
+  if (atIndex < 1 || dotIndex < atIndex + 2 || dotIndex + 2 >= email.length) {
+    return false; // Basic format checks
+  }
+
+  return true;
+}
+
+// Example usage:
+console.log(validateEmail("[email address removed]")); // true
+console.log(validateEmail("testexample.com")); // false
+console.log(validateEmail("")); // false
+console.log(validateEmail(123)); // false
+Types and Loops: countVowels(str)
+JavaScript
+
+// --- Example 2: countVowels(str) ---
+function countVowels(str) {
+  if (typeof str !== 'string') {
+    return 0;
+  }
+  const vowels = 'aeiou';
+  let count = 0;
+  for (const char of str.toLowerCase()) {
+    if (vowels.includes(char)) {
+      count++;
+    }
+  }
+  return count;
+}
+
+// Example usage:
+console.log(countVowels("Hello World")); // 3
+console.log(countVowels(1234)); // 0
+Objects: calculateAverageGrade(student)
+JavaScript
+
+// --- Example 3: calculateAverageGrade(student) ---
+function calculateAverageGrade(student) {
+  if (!student || !Array.isArray(student.grades) || student.grades.length === 0) {
+    return 0;
+  }
+  const sum = student.grades.reduce((acc, grade) => acc + grade, 0);
+  return sum / student.grades.length;
+}
+
+const student = { firstName: "john", lastName: "doe", age: 20, grades: [80, 90, 70] };
+console.log(calculateAverageGrade(student)); // 80
+Local Storage and JSON: saveProductsToLocalStorage(products) and loadProductsFromLocalStorage()
+JavaScript
+
+// --- Example 4: Local Storage and JSON ---
+function saveProductsToLocalStorage(products) {
+  localStorage.setItem('products', JSON.stringify(products));
+}
+
+function loadProductsFromLocalStorage() {
+  const productsJSON = localStorage.getItem('products');
+  if (productsJSON) {
+    return JSON.parse(productsJSON);
+  }
+  return [];
+}
+
+const products = [
+  { name: 'Laptop', price: 1200, quantity: 1 },
+  { name: 'Mouse', price: 25, quantity: 2 },
+];
+
+saveProductsToLocalStorage(products);
+console.log(loadProductsFromLocalStorage());
+Date Object: formatDate(date) and date differences
+JavaScript
+
+// --- Example 5: Date Object ---
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+const today = new Date();
+console.log(formatDate(today)); // Output: YYYY-MM-DD
+
+function daysBetween(date1, date2){
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+}
+
+const date1 = new Date("2023-01-01");
+const date2 = new Date("2023-01-10");
+console.log(daysBetween(date1,date2)); // outputs 9.
+Extending Loops: filtering arrays
+JavaScript
+
+// --- Example 6: Extending Loops ---
+function getEvenNumbers(numbers) {
+  return numbers.filter(number => number % 2 === 0);
+}
+
+function getLongStrings(strings) {
+  return strings.filter(str => str.length > 5);
+}
+
+const numbers = [1, 2, 3, 4, 5, 6];
+const strings = ["apple", "banana", "kiwi", "orange"];
+
+console.log(getEvenNumbers(numbers)); // [2, 4, 6]
+console.log(getLongStrings(strings)); // ["banana", "orange"]
+HTML and CSS Solutions
+
+HTML Structure (form):
+HTML
+
+<form id="myForm">
+  <label for="firstName">First Name:</label>
+  <input type="text" id="firstName" name="firstName" required><br><br>
+
+  <label for="lastName">Last Name:</label>
+  <input type="text" id="lastName" name="lastName" required><br><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required><br><br>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required><br><br>
+
+  <label for="dateOfBirth">Date of Birth:</label>
+  <input type="date" id="dateOfBirth" name="dateOfBirth" required><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+CSS Styling:
+CSS
+
+/* --- Example 2 (CSS): Form Styling --- */
+#myForm {
+  width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+#myForm label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#myForm input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+#myForm button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+div.hoverDiv{
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+}
+
+div.hoverDiv:hover{
+  background-color: lightcoral;
+}
+
+.gridDiv{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.gridItem{
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+Code snippet
+
+<div class="hoverDiv"></div>
+<div class="gridDiv">
+  <div class="gridItem">1</div>
+  <div class="gridItem">2</div>
+  <div class="gridItem">3</div>
+  <div class="gridItem">4</div>
+  <div class="gridItem">5</div>
+  <div class="gridItem">6</div>
+  <div class="gridItem">7</div>
+  <div class="gridItem">8</div>
+  <div class="gridItem">9</div>
+</div>
+HTML and Javascript interaction:
+HTML
+
+<button id="changeText">Change Text</button>
+<p id="myParagraph">Initial Text</p>
+<form id="mySecondForm">
+    <input type="text" id="formText">
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    document.getElementById("changeText").addEventListener("click", function(){
+        document.getElementById("myParagraph").textContent = "Text Changed!";
+    });
+    document.getElementById("mySecondForm").addEventListener("submit", function(event){
+        event.preventDefault();
+        console.log(document.getElementById("formText").value);
